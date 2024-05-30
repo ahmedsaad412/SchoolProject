@@ -1,6 +1,7 @@
-
 using Microsoft.EntityFrameworkCore;
 using SchoolProject.Infrastructure.Data;
+using SchoolProject.Infrastructure;
+using SchoolProject.Service;
 
 namespace SchoolProject.Api
 {
@@ -22,7 +23,11 @@ namespace SchoolProject.Api
             {
               options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
             });
-           
+
+            ///dependency injection
+            builder.Services.AddInfrastructureDependancies()
+                            .AddStudentService();
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
