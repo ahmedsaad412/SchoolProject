@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using SchoolProject.Infrastructure.Data;
 using SchoolProject.Infrastructure;
 using SchoolProject.Service;
+using SchoolProject.Core;
 
 namespace SchoolProject.Api
 {
@@ -26,7 +27,8 @@ namespace SchoolProject.Api
 
             ///dependency injection
             builder.Services.AddInfrastructureDependancies()
-                            .AddStudentService();
+                            .AddStudentService()
+                            .AddCoreDependancies();
 
             var app = builder.Build();
 
